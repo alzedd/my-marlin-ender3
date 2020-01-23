@@ -18,3 +18,10 @@ jobs:
       - name: Build
         run: platformio run
         working-directory: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/
+      - name: Upload Artefatto 
+        uses: actions/upload-artifact@v1
+        with:
+          name: firmwaredir
+          path: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/.pio/build
+
+
