@@ -1,0 +1,20 @@
+name: Test Configuration
+on: push
+
+jobs:
+  main:
+    name: Main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup Python
+        uses: actions/setup-python@master
+        with:
+          python-version: '3.x'
+      - name: Install Platform IO
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U platformio
+      - name: Build
+        run: platformio run
+        working-directory: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/
