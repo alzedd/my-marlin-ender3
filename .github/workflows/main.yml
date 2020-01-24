@@ -1,4 +1,4 @@
-name: Build Marlin
+name: Build Docker
 on: push
 
 jobs:
@@ -6,12 +6,11 @@ jobs:
     name: Main
     runs-on: ubuntu-latest
     container: 
-        image: suculent/platformio-docker-build:latest
+        image: sglahn/platformio-core:latest
         volumes:
             - $GITHUB_WORKSPACE:/workspace
 
     steps:
-
       - name: Checkout Branch
         uses: actions/checkout@master
 
