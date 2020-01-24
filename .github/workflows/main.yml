@@ -1,27 +1,29 @@
-name: Test Configuration
+name: Build Marlin
 on: push
 
 jobs:
   main:
     name: Main
     runs-on: ubuntu-latest
+    container: 
+        image: suculent/platformio-docker-build:latest
+        volumes:
+            - $GITHUB_WORKSPACE:/workspace
+
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Python
-        uses: actions/setup-python@master
-        with:
-          python-version: '3.x'
-      - name: Install Platform IO
-        run: |
-          python -m pip install --upgrade pip
-          pip install -U platformio
+
+      - name: Checkout Branch
+        uses: actions/checkout@master
+
       - name: Build
         run: platformio run
         working-directory: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/
-      - name: Upload Artefatto 
-        uses: actions/upload-artifact@v1
-        with:
-          name: firmwaredir
-          path: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/.pio/build/STM32F103RC_bigtree_512K/firmware.bin
+
+      #- name: Upload Artifacts 
+        #uses: actions/upload-artifact@v1
+        #with:
+          #name: firmwaredir
+          #path: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/.pio/build/STM32F103RC_bigtree_512K/firmware.bin
 
 
+#sglahn/platformio-core:latest
