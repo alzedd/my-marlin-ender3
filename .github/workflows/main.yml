@@ -22,6 +22,6 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: firmwaredir
-          path: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/.pio/build
+          path: ./firmware/V1.2/Marlin-2.0.x-SKR-Mini-E3-V1.2/.pio/build/STM32F103RC_bigtree_512K/firmware.bin
 
 
